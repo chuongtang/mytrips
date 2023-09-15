@@ -1,30 +1,39 @@
 /* eslint-disable react/prop-types */
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMdAdd, IoMdSearch } from 'react-icons/io';
+import plus from "../assets/plus.svg";
+import search from "../assets/search.svg";
 
 const Navbar = ({ searchTerm, setSearchTerm, user }) => {
   const navigate = useNavigate();
 
   if (user) {
     return (
-      <div className="flex gap-2 md:gap-5 w-full mt-5 pb-7 ">
-        <div className="flex justify-start items-center w-full px-2 rounded-md bg-white border-none outline-none focus-within:shadow-sm">
-          <IoMdSearch fontSize={21} className="ml-1" />
+      <div className="mt-5 flex w-full gap-2 pb-7 md:gap-5 ">
+        <div className="flex w-full items-center justify-start rounded-xl border-none bg-white px-2 outline-none focus-within:shadow-sm">
+          <img src={search} alt="search button" />
           <input
             type="text"
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search"
             value={searchTerm}
-            onFocus={() => navigate('/search')}
-            className="p-2 w-full bg-white outline-none"
+            onFocus={() => navigate("/search")}
+            className="w-full rounded-lg bg-gray-100 p-2 outline-none"
           />
         </div>
         <div className="flex gap-3 ">
           <Link to={`user-profile/${user?._id}`} className="hidden md:block">
-            <img src={user.image} alt="user-pic" className="w-14 h-12 rounded-lg " />
+            <img
+              src={user.image}
+              alt="user-pic"
+              className="h-12 w-14 rounded-lg "
+            />
           </Link>
-          <Link to="/create-pin" className="bg-black text-white rounded-lg w-12 h-12 md:w-14 md:h-12 flex justify-center items-center">
-            <IoMdAdd />
+          <Link
+            to="/create-pin"
+            className="flex h-12 w-12 items-center justify-center rounded-lg text-white md:h-12 md:w-14"
+          >
+            <img src={plus} alt="add button" />
           </Link>
         </div>
       </div>
