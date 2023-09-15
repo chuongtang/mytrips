@@ -46,7 +46,6 @@ const UserProfile = () => {
 
   const logout = () => {
     localStorage.clear();
-    googleLogout();
     navigate('/login');
   };
 
