@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { MdDownloadForOffline } from 'react-icons/md';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { BsFillArrowUpRightCircleFill } from 'react-icons/bs';
-
+import download from '../assets/download.svg'
 import { client, urlFor } from '../client';
 
 const Pin = ({ pin }) => {
@@ -59,14 +59,19 @@ const Pin = ({ pin }) => {
         onMouseEnter={() => setPostHovered(true)}
         onMouseLeave={() => setPostHovered(false)}
         onClick={() => navigate(`/pin-detail/${_id}`)}
-        className=" relative cursor-zoom-in w-auto hover:shadow-lg rounded-lg overflow-hidden transition-all duration-500 ease-in-out"
+        className=" relative w-auto cursor-zoom-in overflow-hidden rounded-lg transition-all duration-500 ease-in-out hover:shadow-lg"
       >
-          {image && (
-        <img className="rounded-lg w-full " src={(urlFor(image).width(250).url())} alt="user-post" /> )}
+        {image && (
+          <img
+            className="w-full rounded-lg "
+            src={urlFor(image).width(250).url()}
+            alt="user-post"
+          />
+        )}
         {postHovered && (
           <div
-            className="absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-50"
-            style={{ height: '100%' }}
+            className="absolute top-0 z-50 flex h-full w-full flex-col justify-between p-1 pb-2 pr-2 pt-2"
+            style={{ height: "100%" }}
           >
             <div className="flex items-center justify-between">
               <div className="flex gap-2">
@@ -76,13 +81,17 @@ const Pin = ({ pin }) => {
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
-                  className="bg-white w-9 h-9 p-2 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none"
-                ><MdDownloadForOffline />
+                  className="text-dark flex h-9 w-9 items-center justify-center rounded-full bg-white p-2 text-xl opacity-75 outline-none hover:opacity-100 hover:shadow-md"
+                >
+                  <img src={download} alt="download icon" className="h-8" />
                 </a>
               </div>
               {alreadySaved?.length !== 0 ? (
-                <button type="button" className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none">
-                  {pin?.save?.length}  Saved
+                <button
+                  type="button"
+                  className="rounded-3xl bg-red-500 px-5 py-1 text-base font-bold text-white opacity-70 outline-none hover:opacity-100 hover:shadow-md"
+                >
+                  {pin?.save?.length} Saved
                 </button>
               ) : (
                 <button
@@ -91,46 +100,47 @@ const Pin = ({ pin }) => {
                     savePin(_id);
                   }}
                   type="button"
-                  className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
+                  className="rounded-3xl bg-red-500 px-5 py-1 text-base font-bold text-white opacity-70 outline-none hover:opacity-100 hover:shadow-md"
                 >
-                  {pin?.save?.length}   {savingPost ? 'Saving' : 'Save'}
+                  {pin?.save?.length} {savingPost ? "Saving" : "Save"}
                 </button>
               )}
             </div>
-            <div className=" flex justify-between items-center gap-2 w-full">
+            <div className=" flex w-full items-center justify-between gap-2">
               {destination?.slice(8).length > 0 ? (
                 <a
                   href={destination}
                   target="_blank"
-                  className="bg-white flex items-center gap-2 text-black font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-md"
+                  className="flex items-center gap-2 rounded-full bg-white p-2 pl-4 pr-4 font-bold text-black opacity-70 hover:opacity-100 hover:shadow-md"
                   rel="noreferrer"
                 >
-                  {' '}
+                  {" "}
                   <BsFillArrowUpRightCircleFill />
                   {destination?.slice(8, 17)}...
                 </a>
               ) : undefined}
-              {
-           postedBy?._id === user?.googleId && (
-           <button
-             type="button"
-             onClick={(e) => {
-               e.stopPropagation();
-               deletePin(_id);
-             }}
-             className="bg-white p-2 rounded-full w-8 h-8 flex items-center justify-center text-dark opacity-75 hover:opacity-100 outline-none"
-           >
-             <AiTwotoneDelete />
-           </button>
-           )
-        }
+              {postedBy?._id === user?.user._id && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deletePin(_id);
+                  }}
+                  className="text-dark flex h-8 w-8 items-center justify-center rounded-full bg-white p-2 opacity-75 outline-none hover:opacity-100"
+                >
+                  <AiTwotoneDelete />
+                </button>
+              )}
             </div>
           </div>
         )}
       </div>
-      <Link to={`/user-profile/${postedBy?._id}`} className="flex gap-2 mt-2 items-center">
+      <Link
+        to={`/user-profile/${postedBy?._id}`}
+        className="mt-2 flex items-center gap-2"
+      >
         <img
-          className="w-8 h-8 rounded-full object-cover"
+          className="h-8 w-8 rounded-full object-cover"
           src={postedBy?.image}
           alt="user-profile"
         />

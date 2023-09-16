@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
-import { RiHomeFill } from 'react-icons/ri';
-import { IoIosArrowForward } from 'react-icons/io';
 import logo from '../assets/logo.svg';
+import home from '../assets/home.svg';
+import rightArrow from '../assets/rightArrow.svg';
 import { categories } from '../utils/data';
 
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
@@ -13,34 +13,42 @@ const Sidebar = ({ closeToggle, user }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 hide-scrollbar">
+    <div className="hide-scrollbar flex h-full min-w-210 flex-col justify-between overflow-y-scroll bg-white">
       <div className="flex flex-col">
         <Link
           to="/"
-          className="flex px-5 gap-2 my-6 pt-1 w-190 items-center"
+          className="my-6 flex w-190 items-center gap-2 px-5 pt-1"
           onClick={handleCloseSidebar}
         >
-          <img src={logo} alt="logo" className="w-full" />
+          <img src={logo} alt="logo" className="w-full animate-pulse" />
         </Link>
         <div className="flex flex-col gap-5">
-
           <NavLink
             to="/"
-            className={({ isActive }) => (isActive ? isActiveStyle : isNotActiveStyle)}
+            className={({ isActive }) =>
+              isActive ? isActiveStyle : isNotActiveStyle
+            }
             onClick={handleCloseSidebar}
           >
-            <RiHomeFill />
-            Home
+            <img src={home} alt="home icon" className="h-10" />
+            <p className="text-teal-800">Home</p>
           </NavLink>
-          <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover cateogries</h3>
+          <h3 className="mt-2 animate-bounce px-5 text-base text-gray-600 2xl:text-xl">
+            Memories from places
+          </h3>
           {categories.slice(0, categories.length - 1).map((category) => (
             <NavLink
               to={`/category/${category.name}`}
-              className={({ isActive }) => (isActive ? isActiveStyle : isNotActiveStyle)}
+              className={({ isActive }) =>
+                isActive ? isActiveStyle : isNotActiveStyle
+              }
               onClick={handleCloseSidebar}
               key={category.name}
             >
-              <img src={category.image} className="w-8 h-8 rounded-full shadow-sm" />
+              <img
+                src={category.image}
+                className="h-8 w-8 rounded-full shadow-sm"
+              />
               {category.name}
             </NavLink>
           ))}
@@ -49,12 +57,16 @@ const Sidebar = ({ closeToggle, user }) => {
       {user && (
         <Link
           to={`user-profile/${user._id}`}
-          className="flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
+          className="mx-3 my-5 mb-3 flex items-center gap-2 rounded-lg bg-red-50 p-2 shadow-xl"
           onClick={handleCloseSidebar}
         >
-          <img src={user.image} className="w-10 h-10 rounded-full" alt="user-profile" />
+          <img
+            src={user.image}
+            className="h-10 w-10 rounded-full"
+            alt="user-profile"
+          />
           <p>{user.userName}</p>
-          <IoIosArrowForward />
+          <img src={rightArrow} alt="rightArrow icon" className="h-8" />
         </Link>
       )}
     </div>

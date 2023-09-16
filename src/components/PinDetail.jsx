@@ -56,7 +56,7 @@ const PinDetail = ({ user }) => {
 
   if (!pinDetail) {
     return (
-      <Spinner message="Showing pin" />
+      <Spinner message="Loading pin" />
     );
   }
 

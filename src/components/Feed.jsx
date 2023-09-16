@@ -31,7 +31,7 @@ const Feed = () => {
   const ideaName = categoryId || 'new';
   if (loading) {
     return (
-      <Spinner message={`We are adding ${ideaName} ideas to your feed!`} />
+      <Spinner message={`Calling ${ideaName} memories to you!`} />
     );
   }
   return (

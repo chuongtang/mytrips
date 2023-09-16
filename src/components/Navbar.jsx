@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Link, useNavigate } from 'react-router-dom';
-import { IoMdAdd, IoMdSearch } from 'react-icons/io';
 import plus from "../assets/plus.svg";
 import search from "../assets/search.svg";
 
