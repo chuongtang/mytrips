@@ -2,10 +2,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { MdDownloadForOffline } from 'react-icons/md';
-import { AiTwotoneDelete } from 'react-icons/ai';
-import { BsFillArrowUpRightCircleFill } from 'react-icons/bs';
 import download from '../assets/download.svg'
+import delBtn from '../assets/delBtn.svg'
+import openLink from '../assets/openLink.svg'
 import { client, urlFor } from '../client';
 
 const Pin = ({ pin }) => {
@@ -15,9 +14,10 @@ const Pin = ({ pin }) => {
   const navigate = useNavigate();
 
   const { postedBy, image, _id, destination } = pin;
+  
 
-  const user = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
-
+  const user = localStorage.getItem('member') !== 'undefined' ? JSON.parse(localStorage.getItem('member')) : localStorage.clear();
+  console.log("PINNN here", user);
   const deletePin = (id) => {
     client
       .delete(id)
@@ -26,7 +26,7 @@ const Pin = ({ pin }) => {
       });
   };
 
-  let alreadySaved = pin?.save?.filter((item) => item?.postedBy?._id === user?.googleId);
+  let alreadySaved = pin?.save?.filter((item) => item?.postedBy?._id === user?._id);
 
   alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
 
@@ -39,10 +39,10 @@ const Pin = ({ pin }) => {
         .setIfMissing({ save: [] })
         .insert('after', 'save[-1]', [{
           _key: uuidv4(),
-          userId: user?.googleId,
+          userId: user?._id,
           postedBy: {
             _type: 'postedBy',
-            _ref: user?.googleId,
+            _ref: user?._id,
           },
         }])
         .commit()
@@ -111,15 +111,15 @@ const Pin = ({ pin }) => {
                 <a
                   href={destination}
                   target="_blank"
-                  className="flex items-center gap-2 rounded-full bg-white p-2 pl-4 pr-4 font-bold text-black opacity-70 hover:opacity-100 hover:shadow-md"
+                  className="flex items-center gap-2 rounded-full bg-white p-2 font-bold text-black opacity-70 hover:opacity-100 hover:shadow-md"
                   rel="noreferrer"
                 >
                   {" "}
-                  <BsFillArrowUpRightCircleFill />
+                  <img src={openLink} alt="openLink icon" className="h-6" />
                   {destination?.slice(8, 17)}...
                 </a>
               ) : undefined}
-              {postedBy?._id === user?.user._id && (
+              {postedBy?._id === user?._id && (
                 <button
                   type="button"
                   onClick={(e) => {
@@ -128,7 +128,7 @@ const Pin = ({ pin }) => {
                   }}
                   className="text-dark flex h-8 w-8 items-center justify-center rounded-full bg-white p-2 opacity-75 outline-none hover:opacity-100"
                 >
-                  <AiTwotoneDelete />
+                  <img src={delBtn} alt="delBtn icon" className="h-8" />
                 </button>
               )}
             </div>
