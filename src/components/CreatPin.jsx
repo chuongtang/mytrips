@@ -10,7 +10,7 @@ const CreatePin = ({ user }) => {
   const [title, setTitle] = useState('');
   const [about, setAbout] = useState('');
   const [loading, setLoading] = useState(false);
-  const [destination, setDestination] = useState();
+  // const [destination, setDestination] = useState();
   const [fields, setFields] = useState();
   const [category, setCategory] = useState();
   const [imageAsset, setImageAsset] = useState();
@@ -40,12 +40,11 @@ const CreatePin = ({ user }) => {
   };
 
   const savePin = () => {
-    if (title && about && destination && imageAsset?._id && category) {
+    if (title && about && imageAsset?._id && category) {
       const doc = {
         _type: 'pin',
         title,
         about,
-        destination,
         image: {
           _type: 'image',
           asset: {
@@ -150,21 +149,21 @@ const CreatePin = ({ user }) => {
             type="text"
             value={about}
             onChange={(e) => setAbout(e.target.value)}
-            placeholder="Tell everyone what your Pin is about"
+            placeholder="Tell everyone what your memory is about"
             className="border-b-2 border-gray-200 p-2 text-base outline-none sm:text-lg"
           />
-          <input
+          {/* <input
             type="url"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Add a destination link"
             className="border-b-2 border-gray-200 p-2 text-base outline-none sm:text-lg"
-          />
+          /> */}
 
           <div className="flex flex-col">
             <div>
               <p className="text:lg mb-2 font-semibold sm:text-xl">
-                Choose Pin Category
+                Choose Destination
               </p>
               <select
                 onChange={(e) => {
@@ -173,7 +172,7 @@ const CreatePin = ({ user }) => {
                 className="w-4/5 cursor-pointer rounded-md border-b-2 border-gray-200 p-2 text-base outline-none"
               >
                 <option value="others" className="sm:text-bg bg-white">
-                  Select Category
+                  Where was it?
                 </option>
                 {categories.map((item) => (
                   <option
