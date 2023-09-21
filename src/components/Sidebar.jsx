@@ -36,7 +36,8 @@ const Sidebar = ({ closeToggle, user }) => {
           <h3 className="mt-2 animate-bounce px-5 text-base text-gray-600 2xl:text-xl">
             Memories from places
           </h3>
-          {categories.slice(0, categories.length - 1).map((category) => (
+          {categories.slice(0, categories.length - 1).map((category) =>
+            // console.log(category)
             <NavLink
               to={`/category/${category.name}`}
               className={({ isActive }) =>
@@ -47,11 +48,12 @@ const Sidebar = ({ closeToggle, user }) => {
             >
               <img
                 src={category.image}
+                // src={category.image}
                 className="h-8 w-8 rounded-full shadow-sm"
               />
               {category.name}
             </NavLink>
-          ))}
+          )}
         </div>
       </div>
       {user && (

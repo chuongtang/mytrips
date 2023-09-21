@@ -100,9 +100,9 @@ const Pin = ({ pin }) => {
                     savePin(_id);
                   }}
                   type="button"
-                  className="rounded-3xl bg-red-500 px-5 py-1 text-base font-bold text-white opacity-70 outline-none hover:opacity-100 hover:shadow-md"
+                  className="rounded-3xl bg-gray-400 p-1 text-base font-bold text-white opacity-70 outline-none hover:opacity-100 hover:shadow-md"
                 >
-                  {pin?.save?.length} {savingPost ? "Saving" : "Save"}
+                  {pin?.save?.length} {savingPost ? "Saving" : "👍"}
                 </button>
               )}
             </div>
