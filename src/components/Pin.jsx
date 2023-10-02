@@ -17,7 +17,7 @@ const Pin = ({ pin }) => {
   
 
   const user = localStorage.getItem('member') !== 'undefined' ? JSON.parse(localStorage.getItem('member')) : localStorage.clear();
-  console.log("PINNN here", user);
+  // console.log("PINNN here", user);
   const deletePin = (id) => {
     client
       .delete(id)

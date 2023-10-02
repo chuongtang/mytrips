@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
 import { hashID } from "../utils/data";
+// import feedUsers from "../utils/FeedData";
 
 const Login = () => {
   const navigate = useNavigate();
-  const users = ["SELECT USER", "Rong", "Nghe", "In", "Unaunin", "TLC", "stranger!"]
+  const users = ["SELECT USER", "Rong", "Nghe", "In", "Unaunin", "TLC","Queenie", "view-only"]
   const [user, setUser] = useState("SELECT USER")
   let [pW, setPw] = useState('')
   const [vaultObj, setVaultObj] = useState({})
@@ -15,14 +16,16 @@ const Login = () => {
   const InPw = import.meta.env.VITE_IN_PW
   const MaiPw = import.meta.env.VITE_UNAUNIN_PW
   const TLCPw = import.meta.env.VITE_TLC_PW
-  const vault = [null, RongPw, NghePw, InPw, MaiPw, TLCPw,]
+  const QueeniePw = import.meta.env.VITE_QUEENIE_PW
+  const vault = [null, RongPw, NghePw, InPw, MaiPw, TLCPw, QueeniePw];
 
 
   useEffect(() => {
     const obj = users.reduce((accumulator, user, index) => {
       return { ...accumulator, [user]: vault[index] };
     }, {});
-    console.log(obj)
+    // feedUsers();  //⬅️ to be run when adding new user
+    //  console.log(obj)
     setVaultObj(obj);
     setPw("")
     // eslint-disable-next-line react-hooks/exhaustive-deps
