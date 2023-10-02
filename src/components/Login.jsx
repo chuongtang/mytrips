@@ -5,7 +5,7 @@ import { hashID } from "../utils/data";
 
 const Login = () => {
   const navigate = useNavigate();
-  const users = ["SELECT USER", "Rong", "Nghe", "In", "Unaunin", "TLC","Queenie", "view-only"]
+  const users = ["SELECT USER", "Rong", "Nghe", "In", "Unaunin", "TLC","Queenie"]
   const [user, setUser] = useState("SELECT USER")
   let [pW, setPw] = useState('')
   const [vaultObj, setVaultObj] = useState({})
@@ -17,7 +17,7 @@ const Login = () => {
   const MaiPw = import.meta.env.VITE_UNAUNIN_PW
   const TLCPw = import.meta.env.VITE_TLC_PW
   const QueeniePw = import.meta.env.VITE_QUEENIE_PW
-  const vault = [null, RongPw, NghePw, InPw, MaiPw, TLCPw, QueeniePw];
+  const vault = [null, RongPw, NghePw, InPw, MaiPw, TLCPw, QueeniePw,];
 
 
   useEffect(() => {
@@ -34,8 +34,8 @@ const Login = () => {
   const Add = users.map(Add => Add)
   const handleUserChange = (e) => {
     const activeUser = (users[e.target.value])
-    console.log(activeUser)
-    setPw('abc')
+    // console.log(activeUser)
+    setPw('view')
     setUser(activeUser)
   }
   const handlePwChange = (e) => {
@@ -72,7 +72,7 @@ const Login = () => {
           {/* <div className="leading-loose"> */}
           <form className="mx-2 max-w-sm rounded-xl bg-teal-400 bg-gradient-to-l p-6 shadow-xl md:bg-gradient-to-r">
             <p className="mb-8 text-center text-2xl font-bold text-white">
-              Welcome to Felicity❤️
+              Welcome to MyTrips❤️
             </p>
             <div className="mb-2">
               <label className="text-gray-900" htmlFor="users">
@@ -111,6 +111,7 @@ const Login = () => {
                 Login
               </button>
             </div>
+            <p className="text-xs mt-2">or send a login request to "email@chuongtang.com"</p>
           </form>
           {/* </div> */}
         </div>
