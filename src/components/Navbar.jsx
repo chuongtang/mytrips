@@ -8,8 +8,8 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
 
   if (user) {
     return (
-      <div className="mt-5 flex w-full gap-2 pb-7 md:gap-5 ">
-        <div className="flex w-full items-center justify-start rounded-xl border-none bg-white px-2 outline-none focus-within:shadow-sm">
+      <div className="mt-5 flex w-full gap-2 pb-7 md:gap-5">
+        <div className="flex w-full items-center justify-start rounded-xl border-none bg-gradient-to-r from-indigo-200 from-10% via-sky-500 via-30% to-emerald-200 to-90% bg-top px-2 outline-none focus-within:shadow-sm">
           <img src={search} alt="search button" />
           <input
             type="text"

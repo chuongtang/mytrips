@@ -70,7 +70,7 @@ const Login = () => {
       <div className="container mx-auto flex h-full flex-1 items-center justify-center">
         <div className="w-full max-w-lg">
           {/* <div className="leading-loose"> */}
-          <form className="mx-2 max-w-sm rounded-xl bg-teal-400 bg-gradient-to-l p-6 shadow-xl md:bg-gradient-to-r">
+          <form className="mx-2 max-w-sm rounded-xl bg-teal-400 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6 shadow-xl md:bg-gradient-to-r">
             <p className="mb-8 text-center text-2xl font-bold text-white">
               Welcome to MyTrips❤️
             </p>
@@ -105,13 +105,15 @@ const Login = () => {
             <div className="mt-4 flex items-center justify-between">
               <button
                 type="submit"
-                className="w-full rounded-lg  bg-indigo-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  focus:ring-offset-indigo-200"
+                className="w-full rounded-lg bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2  text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 hover:from-pink-500 hover:to-yellow-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  focus:ring-offset-indigo-200"
                 onClick={handlelogin}
               >
                 Login
               </button>
             </div>
-            <p className="text-xs mt-2">or send a login request to "email@chuongtang.com"</p>
+            <p className="mt-2 text-xs">
+              or send a login request to "email@chuongtang.com"
+            </p>
           </form>
           {/* </div> */}
         </div>
