@@ -19,11 +19,11 @@ export const categories = [
   },
   
   {
-    name: 'Place3',
+    name: 'Vancouver24',
     image: 'https://i.pinimg.com/236x/72/8c/b4/728cb43f48ca762a75da645c121e5c57.jpg',
   },
   {
-    name: 'Place4',
+    name: 'Toronto24',
     image: 'https://i.pinimg.com/236x/7d/ef/15/7def15ac734837346dac01fad598fc87.jpg',
   },
   {
