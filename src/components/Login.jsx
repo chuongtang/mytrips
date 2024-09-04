@@ -5,7 +5,7 @@ import { hashID } from "../utils/data";
 
 const Login = () => {
   const navigate = useNavigate();
-  const users = ["SELECT USER", "Rong", "Nghe", "In", "Unaunin", "TLC","Queenie"]
+  const users = ["SELECT USER", "Rong", "Nghe", "In", "Unaunin", "TLC","Queenie", "BeHa"]
   const [user, setUser] = useState("SELECT USER")
   let [pW, setPw] = useState('')
   const [vaultObj, setVaultObj] = useState({})
@@ -17,7 +17,8 @@ const Login = () => {
   const MaiPw = import.meta.env.VITE_UNAUNIN_PW
   const TLCPw = import.meta.env.VITE_TLC_PW
   const QueeniePw = import.meta.env.VITE_QUEENIE_PW
-  const vault = [null, RongPw, NghePw, InPw, MaiPw, TLCPw, QueeniePw,];
+  const BeHaPw = import.meta.env.VITE_BEHA_PW
+  const vault = [null, RongPw, NghePw, InPw, MaiPw, TLCPw, QueeniePw,BeHaPw];
 
 
   useEffect(() => {

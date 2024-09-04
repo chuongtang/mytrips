@@ -22,6 +22,7 @@ const UserProfile = () => {
     // console.log(userId)
     const query = userQuery(userId);
     client.fetch(query).then((data) => {
+      console.log(data)
       setUser(data[0]);
     });
   }, [userId]);

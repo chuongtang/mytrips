@@ -54,15 +54,15 @@ const feedUsers = () => {
   // client.createIfNotExists(Rong).then((res) => {
   //   console.log(`Rong document ID is ${res._id}`)
   // })
-  const Queenie = {
-    _id: hashID('Queenie'),
+  const BeHa = {
+    _id: hashID('BeHa'),
     _type: 'user',
-    userName: 'Queenie',
-    image: "https://chuongtang.github.io/sourceStore/memories/Queenie.png",
+    userName: 'BeHa',
+    image: "https://chuongtang.github.io/sourceStore/memories/Ha.png",
   }
 
-  client.createIfNotExists(Queenie).then((res) => {
-    console.log(`Queenie document ID is ${res._id}`)
+  client.createIfNotExists(BeHa).then((res) => {
+    console.log(`BeHa document ID is ${res._id}`)
   })
 }
 export default feedUsers;
